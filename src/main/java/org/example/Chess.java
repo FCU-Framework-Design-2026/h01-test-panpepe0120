@@ -1,50 +1,31 @@
 package org.example;
+//棋子藍圖
+public class chess{
+    String name; //棋子名稱(將、士、象、車、馬、炮、兵)
+    int weight; //棋子權重(判斷吃子優先順序)
+    String side; // 陣營(紅、黑)
+    String loc; //棋子位置(例如: A1、B2)
+    boolean isOpen; //棋子是否翻開
+}
 
-public class Chess {
-    private String name;
-    private int weight;
-    private String side;
-    private String loc;
-    private boolean isFlipped;
+public Chess(String name, int weight, String side, String loc) {
+    this.name = name;
+    this.weight = weight;
+    this.side = side;
+    this.loc = loc;
+    this.isOpen = false; // 一開始全部蓋著
+}
 
-    public Chess(String name, int weight, String side, String loc) {
-        this.name = name;
-        this.weight = weight;
-        this.side = side;
-        this.loc = loc;
-        this.isFlipped = false;
+//印出棋子
+@Override
+public String toString() {
+    if (!isOpen) {
+        return "X"; // 沒翻開
     }
+    return side + name + "(" + loc + ")";
+}
 
-    public void flip() {
-        isFlipped = true;
-    }
-
-    public boolean isFlipped() {
-        return isFlipped;
-    }
-
-    public String getLoc() {
-        return loc;
-    }
-
-    public void setLoc(String loc) {
-        this.loc = loc;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public int getWeight() {
-        return weight;
-    }
-
-    public String getSide() {
-        return side;
-    }
-
-    @Override
-    public String toString() {
-        return isFlipped ? name : "＿";
-    }
+//翻開棋子
+public void flip() {
+    isOpen = true;
 }

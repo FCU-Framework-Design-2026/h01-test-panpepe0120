@@ -10,7 +10,18 @@
 
 
 ## 設計方法概述
-先印出 Hello world, 在透過 Java 的迴圈，一共跑五次，每一次都印出提示字和 i 的值。
+考慮一個象棋翻棋遊戲，32 個棋子會隨機的落在 4*8的棋盤上。透過 Chess 的建構子產生這些棋子並隨機編排位置，再印出這些棋子的名字、位置
+ChessGame
+void showAllChess();
+void generateChess();
+Chess:
+Chess(name, weight, side, loc);
+String toString();
+同上，
+ChessGame 繼承一個抽象的 AbstractGame; AbstractGame 宣告若干抽象的方法：
+setPlayers(Player, Player)
+boolean gameOver()
+boolean move(int location)
 
 ## 程式、執行畫面及其說明
 迴圈的內容如下：
@@ -31,3 +42,6 @@ for (int i = 1; i <= 5; i++) {
 
 ## 心得
 我學到的迴圈的使用。
+1.github
+2.maven轉用vscode 其中差別??
+3.如何git我有下載了新軟體??
