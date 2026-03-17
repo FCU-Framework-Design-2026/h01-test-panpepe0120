@@ -24,13 +24,24 @@ boolean gameOver()
 boolean move(int location)
 
 ## 程式、執行畫面及其說明
-迴圈的內容如下：
+Chess = 一顆棋子
+名稱（車、馬、兵…）
+大小（誰能吃誰）
+陣營（紅 / 黑）
+位置（A1, B3…）
+是否翻開（很重要🔥）
 
-```java
-for (int i = 1; i <= 5; i++) {
-    System.out.println("i = " + i);
+public class Chess {
+
+    String name;    // 棋子名稱（車、馬…）
+    int weight;     // 棋子大小（用來判斷吃子）
+    String side;    // 陣營（紅 / 黑）
+    String loc;     // 位置（A1, B2）
+    boolean isOpen; // 是否翻開
+
 }
-```
+
+
 
 每一次，i 的值會變化。執行的畫面如下：
 
