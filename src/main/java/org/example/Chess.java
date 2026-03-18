@@ -1,34 +1,40 @@
 package org.example;
-//棋子藍圖
-public class Chess{
-    String name; //棋子名稱(將、士、象、車、馬、炮、兵)
-    int weight; //棋子權重(判斷吃子優先順序)
-    String side; // 陣營(紅、黑)
-    String loc; //棋子位置(例如: A1、B2)
-    boolean isOpen; //棋子是否翻開
 
-    //constructor = 建立物件時用
+import java.util.HashMap;
+import java.util.Map;
+
+public class Chess {
+    String name;
+    int weight;
+    String side; // 紅/黑
+    String loc;
+    boolean isOpen;
+    boolean isEaten;
+
     public Chess(String name, int weight, String side, String loc) {
         this.name = name;
         this.weight = weight;
         this.side = side;
         this.loc = loc;
-        this.isOpen = false; // 一開始全部蓋著
+        this.isOpen = false;
+        this.isEaten = false;
     }
 
-    //印出棋子
-    @Override
-    public String toString() {
-        if (!isOpen) {
-            return "X"; // 沒翻開
-        }
-        return side + name + "(" + loc + ")";
-    }
-
-    //翻開棋子
     public void flip() {
         isOpen = true;
     }
 
-    }
+    @Override
+    public String toString() {
+        if (isEaten) return "＊";
+        if (!isOpen) return "。";
 
+        Map<String,String> map = new HashMap<>();
+        map.put("紅將","帥"); map.put("紅士","仕"); map.put("紅象","相");
+        map.put("紅車","俥"); map.put("紅馬","傌"); map.put("紅包","炮"); map.put("紅兵","卒");
+        map.put("黑將","將"); map.put("黑士","士"); map.put("黑象","象");
+        map.put("黑車","車"); map.put("黑馬","馬"); map.put("黑包","包"); map.put("黑兵","兵");
+
+        return map.getOrDefault(side + name, "＊");
+    }
+}
